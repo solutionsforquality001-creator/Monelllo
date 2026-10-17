@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Monello World — Certified Global Investment Partners Since 2013</title>
+<meta name="description" content="Monello World is a certified global investment company since 2013 with 11M+ members across Central Europe & Switzerland. Gold mining, Real Estate, Stocks, Oil, Energy & Crypto since 2015. Crypto deposits & withdrawals." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',system-ui,sans-serif}
+  .serif{font-family:'Instrument Serif',Georgia,serif}
+  .mono{font-family:'JetBrains Mono',monospace}
+  :root{
+    --navy:#0A1628; --gold:#C9A86A; --gold-d:#b8924d; --cream:#F8F5F0;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--cream);color:var(--navy);-webkit-font-smoothing:antialiased}
+  ::selection{background:rgba(201,168,106,.3)}
+  ::-webkit-scrollbar{width:6px;height:6px}
+  ::-webkit-scrollbar-track{background:#0A1628}
+  ::-webkit-scrollbar-thumb{background:#C9A86A;border-radius:99px}
+  a{text-decoration:none;color:inherit}
+  button{cursor:pointer;border:none;font-family:inherit}
+  input,textarea,select{font-family:inherit;outline:none}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 16px}
+  @media(min-width:1024px){.wrap{padding:0 32px}}
+  .card{background:#fff;border:1px solid rgba(10,22,40,.08);border-radius:28px}
+  .pill{border-radius:999px}
+  .btn-gold{background:var(--gold);color:var(--navy);font-weight:600;border-radius:999px;transition:.2s}
+  .btn-gold:hover{background:#d4b681}
+  .btn-navy{background:var(--navy);color:#fff;font-weight:600;border-radius:999px;transition:.2s}
+  .btn-navy:hover{opacity:.9}
+  .tick{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:space-between;padding:8px 0;font-size:11px}
+  .dot{width:6px;height:6px;border-radius:99px;background:#34d399;display:inline-block;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .fade{animation:fade .5s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  table{width:100%;border-collapse:collapse}
+  th,td{text-align:left;padding:10px 8px}
+  .bar{height:8px;background:#fff;border-radius:99px;overflow:hidden}
+  .bar>div{height:100%;background:var(--gold);border-radius:99px}
+  details{background:var(--cream);border-radius:18px;padding:16px}
+  details[open]{background:#fff;box-shadow:0 6px 20px rgba(10,22,40,.06)}
+  details summary{cursor:pointer;list-style:none;font-weight:500;display:flex;justify-content:space-between;gap:16px}
+  details summary::-webkit-details-marker{display:none}
+  .grid{display:grid;gap:16px}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:12px 20px;border-radius:999px;font-size:14px;box-shadow:0 10px 30px rgba(0,0,0,.25);z-index:999}
+  .modal-bg{position:fixed;inset:0;background:rgba(10,22,40,.6);backdrop-filter:blur(4px);z-index:998;padding:16px;overflow:auto}
+  .qrcell{border-radius:1px}
+  .navlink{color:rgba(10,22,40,.7);font-size:14px;font-weight:500}
+  .navlink:hover{color:var(--navy)}
+  .sec-tag{font-size:11px;letter-spacing:.2em;opacity:.5;text-transform:uppercase}
+  .sidebtn{width:100%;text-align:left;padding:12px 16px;border-radius:14px;display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,.7)}
+  .sidebtn:hover{background:rgba(255,255,255,.1)}
+  .sidebtn.active{background:#fff;color:var(--navy);font-weight:600}
+  .crypto-btn{padding:12px;border-radius:16px;border:1px solid transparent;background:var(--cream);text-align:left}
+  .crypto-btn:hover{border-color:rgba(0,0,0,.1)}
+  .crypto-btn.active{background:var(--navy);color:#fff}
+  .chip{background:var(--cream);padding:4px 12px;border-radius:999px;font-size:12px;border:none}
+  .chip:hover{background:var(--navy);color:#fff}
+  .hidden{display:none!important}
+  .glow{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+</style>
+</head>
+<body>
+
+<!-- ══ TOP TICKER ══ -->
+<div style="background:var(--navy);color:#fff;border-bottom:1px solid rgba(255,255,255,.1);font-size:11px">
+  <div class="wrap tick">
+    <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <span style="background:var(--gold);color:var(--navy);padding:2px 8px;border-radius:999px;font-weight:700;letter-spacing:.12em;font-size:10px">CERTIFIED &amp; REGULATED</span>
+      <span style="color:rgba(255,255,255,.6)" class="hide-sm">FINMA • BaFin • CSSF Registered since 2013</span>
+      <span style="color:#34d399;display:inline-flex;align-items:center;gap:6px" class="hide-lg"><span class="dot"></span>MARKETS OPEN</span>
+    </div>
+    <div style="display:flex;gap:16px;align-items:center" class="mono">
+      <span>BTC <b style="color:var(--gold)" id="tBtc">$67,432</b> <span style="color:#34d399">+1.24%</span></span>
+      <span class="hide-sm">GOLD <b style="color:var(--gold)" id="tGold">$2,341.0</b> <span style="color:#34d399">+0.42%</span></span>
+      <span class="hide-sm">ETH <b id="tEth">$3,812</b></span>
+      <span style="color:rgba(255,255,255,.5)" class="hide-md">11,243,891 Members • 12,200+ Partners</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav id="nav" style="position:sticky;top:0;z-index:40;background:rgba(248,245,240,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(10,22,40,.1)">
+  <div class="wrap" style="height:64px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:32px">
+      <a href="#top" style="display:flex;align-items:center;gap:12px">
+        <div style="width:36px;height:36px;border-radius:12px;background:var(--navy);display:grid;place-items:center"><span class="serif" style="color:var(--gold);font-size:20px;line-height:1">M</span></div>
+        <div>
+          <div style="font-weight:700;letter-spacing:.12em;font-size:14px;line-height:1">MONELLO WORLD</div>
+          <div style="font-size:10px;letter-spacing:.18em;color:rgba(10,22,40,.6);font-weight:500">GLOBAL PARTNERS AG</div>
+        </div>
+        <span class="hide-lg" style="margin-left:8px;padding:4px 8px;border-radius:999px;background:var(--navy);color:#fff;font-size:10px;letter-spacing:.12em">EST. 2013 • ZUG, CH</span>
+      </a>
+      <div class="hide-md" style="display:flex;align-items:center;gap:24px">
+        <a class="navlink" href="#about">About</a>
+        <a class="navlink" href="#sectors">Sectors</a>
+        <a class="navlink" href="#plans">Plans</a>
+        <a class="navlink" href="#performance">Performance</a>
+        <a class="navlink" href="#faq">FAQ</a>
+        <a class="navlink" href="#" onclick="openDash();return false" style="background:var(--navy);color:#fff;padding:6px 12px;border-radius:999px;font-size:12px">Dashboard ↗</a>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px">
+      <a href="#" onclick="openDash();return false" class="hide-sm" style="font-size:14px;font-weight:500;padding:8px 16px;border-radius:999px;border:1px solid rgba(10,22,40,.15)" id="navUser">Dashboard</a>
+      <a href="#plans" class="btn-gold" style="padding:10px 20px;font-size:14px">Start Investing →</a>
+      <button class="hide-md" style="width:36px;height:36px;border-radius:99px;border:1px solid rgba(10,22,40,.15);background:none" onclick="toggleMenu()">≡</button>
+    </div>
+  </div>
+  <div id="mobileMenu" class="hidden wrap" style="border-top:1px solid rgba(0,0,0,.06);padding:16px 0;display:flex;flex-direction:column;gap:12px;font-size:14px;background:#fff">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#sectors" onclick="toggleMenu()">Sectors</a>
+    <a href="#plans" onclick="toggleMenu()">Plans</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#" onclick="toggleMenu();openDash()">Dashboard / Login</a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<header id="top" class="wrap" style="padding-top:24px">
+  <div class="grid" style="grid-template-columns:1fr;gap:24px">
+    <div style="display:grid;grid-template-columns:1fr;gap:24px" id="heroGrid">
+      <!-- left -->
+      <div style="background:var(--navy);border-radius:32px;padding:32px;color:#fff;position:relative;overflow:hidden;min-height:560px;display:flex;flex-direction:column">
+        <div class="glow" style="top:-80px;right:-80px;width:560px;height:560px;background:rgba(201,168,106,.22)"></div>
+        <div style="position:relative">
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:6px 12px;font-size:12px;backdrop-filter:blur(8px)">
+            <span class="dot"></span><span style="color:rgba(255,255,255,.9)">11M+ MEMBERS TRUST US • SINCE 2013</span>
+            <span class="hide-sm" style="background:var(--gold);color:var(--navy);padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700">4.9/5 TRUSTPILOT</span>
+          </div>
+          <h1 class="serif" style="font-size:clamp(40px,5vw,58px);line-height:.95;margin-top:24px;font-weight:400">
+            Build Generational<br><span style="font-style:italic;color:var(--gold);font-weight:400">Wealth, Not Just</span><br>Returns.
+          </h1>
+          <p style="color:rgba(255,255,255,.7);font-size:15px;line-height:1.6;margin-top:20px;max-width:520px">
+            Monello World is a <b style="color:#fff">certified global investment collective</b> since 2013 — spanning gold mining, real estate, equities, oil &amp; energy and crypto since 2015. Affiliate partnerships with <b style="color:#fff">12,200+ companies</b> across Europe.
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:28px">
+            <a href="#plans" class="btn-gold" style="padding:12px 24px">Explore Investment Plans</a>
+            <a href="#" onclick="openDash('register');return false" style="background:#fff;color:var(--navy);font-weight:600;padding:12px 24px;border-radius:999px">Create Account — Free</a>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:24px;margin-top:24px;font-size:12px;color:rgba(255,255,255,.6)">
+            <span>✓ FINMA Certified</span><span>✓ Instant Crypto Withdrawals</span><span>✓ 256-bit Secured</span>
+          </div>
+          <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:32px">
+            <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:16px">
+              <div class="serif" style="font-size:24px;font-weight:700">$2.4B+</div><div style="font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.6)">ASSETS UNDER MGMT</div></div>
+            <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:16px">
+              <div class="serif" style="font-size:24px;font-weight:700">98.2%</div><div style="font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.6)">PAYOUT SUCCESS</div></div>
+            <div style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:16px">
+              <div class="serif" style="font-size:24px;font-weight:700">12 yrs</div><div style="font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.6)">UNINTERRUPTED</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right: calculator -->
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <div class="card" style="padding:24px;box-shadow:0 20px 60px rgba(10,22,40,.08)">
+          <div style="display:flex;align-items:center;justify-content:space-between">
+            <h3 style="font-weight:600">Profit Calculator</h3>
+            <span style="font-size:12px;background:var(--navy);color:#fff;padding:4px 10px;border-radius:999px">LIVE RATES</span>
+          </div>
+          <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:16px" id="calcPlans"></div>
+          <div style="margin-top:20px">
+            <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:500"><span>Investment Amount</span><span class="mono" id="calcAmtLbl">$2,500</span></div>
+            <input type="range" id="calcRange" min="1100" max="10000" step="50" value="2500" style="width:100%;margin-top:12px;accent-color:var(--gold)" oninput="calcUpdate()">
+            <div style="display:flex;justify-content:space-between;font-size:11px;color:rgba(0,0,0,.5)" class="mono"><span id="calcMin">$1,100</span><span id="calcMax">$10,000</span></div>
+          </div>
+          <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:20px">
+            <div style="background:var(--cream);border-radius:18px;padding:16px">
+              <div style="font-size:11px;letter-spacing:.12em;opacity:.6">YOU INVEST</div><div style="font-size:20px;font-weight:700" id="calcIn">$2,500</div></div>
+            <div style="background:var(--navy);color:#fff;border-radius:18px;padding:16px">
+              <div style="font-size:11px;letter-spacing:.12em;color:rgba(255,255,255,.6)">YOU RECEIVE</div>
+              <div style="font-size:20px;font-weight:700;color:var(--gold)" id="calcOut">$3,875</div>
+              <div style="font-size:12px;color:#34d399" id="calcProf">+$1,375 profit • 7d</div></div>
+          </div>
+          <a href="#plans" class="btn-gold" style="display:block;text-align:center;margin-top:16px;padding:12px" id="calcCta">Invest $2,500 →</a>
+          <div style="text-align:center;font-size:11px;color:rgba(0,0,0,.5);margin-top:8px">Capital protection • Audited by PwC Switzerland</div>
+        </div>
+
+        <div style="background:var(--navy);border-radius:24px;padding:20px;color:#fff">
+          <div style="display:flex;justify-content:space-between;font-size:12px">
+            <span style="letter-spacing:.12em;opacity:.6">LIVE CRYPTO PAYOUTS</span>
+            <span style="display:flex;align-items:center;gap:6px"><span class="dot"></span>REAL-TIME</span>
+          </div>
+          <div style="margin-top:16px" id="payouts"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="border-radius:20px;padding:16px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+      <span style="font-size:12px;letter-spacing:.18em;opacity:.5;font-weight:600">TRUSTED &amp; CERTIFIED BY</span>
+      <div style="display:flex;flex-wrap:wrap;gap:20px;font-size:14px;font-weight:600;opacity:.7">
+        <span>FINMA</span><span style="opacity:.2">•</span><span>Bloomberg</span><span style="opacity:.2">•</span><span>Coinbase Prime</span><span style="opacity:.2">•</span><span>PwC Switzerland</span><span style="opacity:.2">•</span><span>SIX Swiss Exchange</span><span style="opacity:.2">•</span><span>Reuters</span>
+      </div>
+      <span style="font-size:12px;background:#ecfdf5;color:#047857;padding:4px 12px;border-radius:999px;border:1px solid #a7f3d0">✓ Audited 2013—2025</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══ ABOUT ══ -->
+<section id="about" class="wrap" style="margin-top:40px">
+  <div class="grid" style="grid-template-columns:1fr;gap:24px" id="aboutGrid">
+    <div class="card" style="padding:32px">
+      <div class="sec-tag">ABOUT MONELLO WORLD • ZUG, SWITZERLAND</div>
+      <h2 class="serif" style="font-size:34px;line-height:.95;margin-top:12px;font-weight:400">A Decade of <span style="font-style:italic;color:var(--gold)">Disciplined</span> Growth.</h2>
+      <p style="font-size:15px;line-height:1.65;color:rgba(10,22,40,.65);margin-top:16px">
+        Founded in 2013 in Zug — Switzerland's Crypto Valley — Monello World began as a boutique commodity and real-estate consortium. Today we steward capital across <b>gold mining, prime real estate, listed equities, oil &amp; energy infrastructure</b> and since 2015, institutional-grade cryptocurrencies. Our affiliate network of <b>12,200+ verified European companies</b> gives members privileged access to off-market deals traditionally reserved for private banks.
+      </p>
+      <p style="font-size:15px;line-height:1.65;color:rgba(10,22,40,.65);margin-top:12px">
+        We are not merely profit-driven. Our mandate is to build a <b>monetary system that endures for you and your generation</b> — with Swiss custody, segregated accounts and quarterly PwC audits. Over 11 million members across Central Europe and Switzerland trust Monello World to compound wealth responsibly.
+      </p>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:24px">
+        <div style="background:var(--cream);border-radius:18px;padding:16px;text-align:center"><div style="font-size:20px;font-weight:700">11M+</div><div style="font-size:10px;letter-spacing:.12em;opacity:.6">MEMBERS</div></div>
+        <div style="background:var(--cream);border-radius:18px;padding:16px;text-align:center"><div style="font-size:20px;font-weight:700">12,200+</div><div style="font-size:10px;letter-spacing:.12em;opacity:.6">PARTNERS</div></div>
+        <div style="background:var(--cream);border-radius:18px;padding:16px;text-align:center"><div style="font-size:20px;font-weight:700">A+</div><div style="font-size:10px;letter-spacing:.12em;opacity:.6">CREDIT RATING</div></div>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <a href="https://hikeinflux.world/" target="_blank" rel="noopener" class="btn-navy" style="padding:10px 20px;font-size:14px">Visit Official Registry ↗</a>
+        <button class="chip" style="padding:10px 20px;border:1px solid rgba(0,0,0,.12)" onclick="notify('Certificate PDF downloading…')">View Certification</button>
+      </div>
+    </div>
+    <div style="background:var(--navy);border-radius:28px;padding:32px;color:#fff;position:relative;overflow:hidden">
+      <div class="glow" style="right:-40px;top:-40px;width:320px;height:320px;background:rgba(201,168,106,.16)"></div>
+      <div style="position:relative">
+        <div style="font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.6)">JOURNEY • 2013 → 2025</div>
+        <div style="margin-top:24px" id="timeline"></div>
+        <div style="margin-top:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:16px;display:flex;gap:12px;align-items:center">
+          <span style="width:32px;height:32px;border-radius:99px;background:var(--gold);display:grid;place-items:center">🏆</span>
+          <div><div style="font-size:14px;font-weight:600">Outstanding Results Award 2024</div><div style="font-size:12px;color:rgba(255,255,255,.6)">European Finance Council — Best Diversified Portfolio Manager DACH</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTORS ══ -->
+<section id="sectors" class="wrap" style="margin-top:24px">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px">
+    <div>
+      <div class="sec-tag">DIVERSIFIED SECTORS</div>
+      <h2 class="serif" style="font-size:32px;line-height:1;margin-top:8px;font-weight:400">Six Pillars. One <span style="font-style:italic;color:var(--gold)">Compounding</span> Engine.</h2>
+    </div>
+    <div style="font-size:14px;opacity:.6;max-width:420px">Every franc is allocated across uncorrelated real assets — audited, insured, and custodied in Switzerland.</div>
+  </div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:24px" id="sectorsGrid"></div>
+  <div style="background:var(--navy);border-radius:18px;margin-top:16px;padding:16px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;color:#fff;font-size:14px">
+    <span style="display:flex;align-items:center;gap:8px"><span class="dot"></span>12,200 affiliate companies provide proprietary deal flow — Member-exclusive access.</span>
+    <button onclick="notify('Partner directory opened')" style="background:#fff;color:var(--navy);padding:6px 16px;border-radius:999px;font-size:12px;font-weight:600">Explore Network →</button>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="wrap" style="margin-top:24px">
+  <div class="grid" style="grid-template-columns:1fr;gap:24px" id="howGrid">
+    <div style="background:var(--gold);border-radius:28px;padding:32px">
+      <div style="font-size:11px;letter-spacing:.2em;opacity:.7">HOW IT WORKS • 3 STEPS</div>
+      <h3 class="serif" style="font-size:28px;line-height:1;margin-top:12px;color:var(--navy);font-weight:400">From Crypto Deposit to Generational Dividend.</h3>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:24px" id="stepsGrid"></div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;font-size:12px">
+        <span style="background:var(--navy);color:#fff;padding:6px 12px;border-radius:999px">No hidden fees</span>
+        <span style="background:#fff;padding:6px 12px;border-radius:999px;border:1px solid rgba(0,0,0,.1)">Crypto-only settlement</span>
+        <span style="background:#fff;padding:6px 12px;border-radius:999px;border:1px solid rgba(0,0,0,.1)">SSL + 2FA Secured</span>
+        <span style="background:#fff;padding:6px 12px;border-radius:999px;border:1px solid rgba(0,0,0,.1)">Refer &amp; earn 10%</span>
+      </div>
+    </div>
+    <div class="card" style="padding:24px">
+      <h4 style="font-weight:600">Why Members Stay for Generations</h4>
+      <div style="margin-top:16px;display:flex;flex-direction:column;gap:16px" id="whyGrid"></div>
+      <div style="margin-top:24px;background:var(--cream);border-radius:18px;padding:16px;display:flex;align-items:center;gap:12px">
+        <div style="display:flex">
+          <span style="width:32px;height:32px;border-radius:99px;background:var(--navy);color:#fff;border:2px solid #fff;display:grid;place-items:center;font-size:12px;margin-right:-8px">🇨🇭</span>
+          <span style="width:32px;height:32px;border-radius:99px;background:var(--gold);color:#fff;border:2px solid #fff;display:grid;place-items:center;font-size:12px">🇩🇪</span>
+          <span style="width:32px;height:32px;border-radius:99px;background:#fff;border:2px solid #fff;display:grid;place-items:center;font-size:12px">🇦🇹</span>
+        </div>
+        <div style="font-size:12px"><div style="font-weight:600">Join 11,000+ new members this week</div><div style="opacity:.6">Average rating 4.9/5 from 18,492 reviews</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PLANS ══ -->
+<section id="plans" class="wrap" style="margin-top:32px">
+  <div style="text-align:center;max-width:720px;margin:0 auto">
+    <div style="display:inline-block;font-size:12px;letter-spacing:.2em;background:var(--navy);color:#fff;padding:6px 12px;border-radius:999px">INVESTMENT PLANS • CHOOSE YOUR HORIZON</div>
+    <h2 class="serif" style="font-size:clamp(32px,4vw,44px);line-height:.95;margin-top:16px;font-weight:400">Transparent Terms. <span style="font-style:italic;color:var(--gold)">Predictable</span> Outcomes.</h2>
+    <p style="font-size:14px;opacity:.6;margin-top:12px">Fund with BTC, ETH, USDT, BNB or LTC. All returns quoted net of fees.</p>
+  </div>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:32px" id="plansGrid"></div>
+  <div style="text-align:center;font-size:12px;opacity:.5;margin-top:12px">* Illustrative returns. Past performance does not guarantee future results. Capital at risk.</div>
+</section>
+
+<!-- ══ PERFORMANCE + TESTIMONIALS ══ -->
+<section id="performance" class="wrap" style="margin-top:32px">
+  <div class="grid" style="grid-template-columns:1fr;gap:24px" id="perfGrid">
+    <div class="card" style="padding:32px">
+      <div class="sec-tag">PERFORMANCE • 2013—2025</div>
+      <h3 class="serif" style="font-size:28px;margin-top:8px;font-weight:400">Outstanding Results, <span style="font-style:italic;color:var(--gold)">Audited</span> Annually.</h3>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:24px">
+        <div style="background:var(--cream);border-radius:18px;padding:16px"><div style="font-size:12px;opacity:.6">TOTAL PAYOUTS</div><div style="font-size:24px;font-weight:700">$847M+</div><div style="font-size:12px;color:#059669">↑ 18% YoY</div></div>
+        <div style="background:var(--navy);color:#fff;border-radius:18px;padding:16px"><div style="font-size:12px;opacity:.6">AVG. CLIENT ROI</div><div style="font-size:24px;font-weight:700;color:var(--gold)">47.3%</div><div style="font-size:12px;color:rgba(255,255,255,.6)">per cycle</div></div>
+        <div style="background:var(--cream);border-radius:18px;padding:16px"><div style="font-size:12px;opacity:.6">UPTIME</div><div style="font-size:24px;font-weight:700">99.97%</div><div style="font-size:12px;opacity:.6">12 years</div></div>
+      </div>
+      <div style="margin-top:24px;background:var(--cream);border-radius:18px;padding:16px">
+        <div style="display:flex;justify-content:space-between;font-size:12px;opacity:.6"><span>Portfolio Growth</span><span>2018 → 2025</span></div>
+        <div style="display:flex;align-items:flex-end;gap:6px;height:90px;margin-top:16px" id="chart"></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;opacity:.4;margin-top:8px" class="mono"><span>2018</span><span>2025</span></div>
+      </div>
+    </div>
+    <div style="background:var(--navy);border-radius:28px;padding:32px;color:#fff">
+      <div style="font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.6)">TESTIMONIALS • VERIFIED</div>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:16px" id="testi"></div>
+      <div style="margin-top:24px;display:flex;align-items:center;gap:12px;background:#fff;color:var(--navy);border-radius:18px;padding:12px">
+        <span style="width:32px;height:32px;border-radius:99px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:12px">✓</span>
+        <div style="font-size:12px"><div style="font-weight:700">4.9/5 Trustpilot • 18,492 reviews</div><div style="opacity:.6">Verified investors only</div></div>
+        <button onclick="notify('Reviews opened')" style="margin-left:auto;font-size:12px;font-weight:600;background:none">Read all →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ + CONTACT ══ -->
+<section id="faq" class="wrap" style="margin-top:32px">
+  <div class="grid" style="grid-template-columns:1fr;gap:24px" id="faqGrid">
+    <div class="card" style="padding:32px">
+      <div class="sec-tag">FAQ • TRANSPARENCY</div>
+      <h3 class="serif" style="font-size:26px;margin-top:8px;font-weight:400">Your Questions, Answered.</h3>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px" id="faqList"></div>
+    </div>
+    <div style="background:var(--navy);border-radius:28px;padding:32px;color:#fff">
+      <h3 class="serif" style="font-size:26px;font-weight:400">Contact Our Concierge.</h3>
+      <p style="font-size:14px;color:rgba(255,255,255,.6);margin-top:8px">Swiss support in DE, EN, FR, IT. Avg response 14 minutes.</p>
+      <form onsubmit="sendMsg(event)" style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+        <div class="grid" style="grid-template-columns:1fr 1fr">
+          <input id="cName" placeholder="Full name" required style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:12px 16px;font-size:14px;color:#fff">
+          <input id="cMail" type="email" placeholder="Email" required style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:12px 16px;font-size:14px;color:#fff">
+        </div>
+        <textarea id="cMsg" rows="4" placeholder="How can we help?" required style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:12px 16px;font-size:14px;color:#fff;resize:vertical"></textarea>
+        <button class="btn-gold" style="padding:12px;font-weight:600" type="submit">Send Message</button>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:rgba(255,255,255,.6)">
+          <span>📍 Gotthardstrasse 20, 6300 Zug, CH</span><span>✉️ concierge@monelloworld.com</span><span>☎️ +41 41 588 03 22</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="wrap" style="margin-top:32px">
+  <div style="background:var(--gold);border-radius:28px;padding:40px 32px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+    <div>
+      <div style="font-size:11px;letter-spacing:.2em;opacity:.6">START TODAY • $100 MINIMUM • CRYPTO FUNDED</div>
+      <h3 class="serif" style="font-size:32px;line-height:1;margin-top:8px;font-weight:400">Build the Monetary System<br>Your Generation Deserves.</h3>
+      <div style="font-size:14px;opacity:.7;margin-top:8px">Certified • Insured • Swiss-custodied • 11M members strong.</div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="#" onclick="openDash('register');return false" class="btn-navy" style="padding:12px 28px">Create Free Account</a>
+      <a href="#plans" style="background:#fff;font-weight:600;padding:12px 28px;border-radius:999px;border:1px solid rgba(0,0,0,.08)">View Plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="wrap" style="margin:32px 0 24px">
+  <div style="background:var(--navy);border-radius:28px;padding:32px;color:#fff">
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px">
+      <div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="width:32px;height:32px;border-radius:12px;background:var(--gold);display:grid;place-items:center" class="serif"><b style="color:var(--navy)">M</b></span>
+          <span style="font-weight:700;letter-spacing:.12em;font-size:14px">MONELLO WORLD</span>
+        </div>
+        <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:12px;line-height:1.6">Global Partners AG<br>Gotthardstrasse 20, 6300 Zug, Switzerland<br>Registered &amp; Certified • Est. 2013</div>
+        <div style="display:flex;gap:8px;margin-top:16px;font-size:12px">
+          <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:999px">FINMA</span>
+          <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:999px">BaFin</span>
+          <span style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);padding:4px 10px;border-radius:999px">CSSF</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:600">Company</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:rgba(255,255,255,.6)">
+          <a href="#about">About</a><a href="#sectors">Sectors</a><a href="#performance">Certifications</a><span>Careers</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:600">Invest</div>
+        <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;font-size:14px;color:rgba(255,255,255,.6)">
+          <span>Starter Plan</span><span>Gold Plan</span><span>Real Estate</span><span>Affiliate 10%</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:600">Security &amp; Crypto</div>
+        <div style="margin-top:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:16px">
+          <div style="font-size:12px;line-height:1.6;color:rgba(255,255,255,.7)">Deposits &amp; withdrawals in BTC, ETH, USDT (TRC-20/ERC-20), BNB, LTC. 256-bit SSL • 2FA • Cold-wallet custody • Segregated accounts. Risk disclosure: capital at risk.</div>
+          <div style="display:flex;gap:8px;margin-top:12px;font-size:11px">
+            <span style="background:#fff;color:var(--navy);padding:4px 8px;border-radius:999px">🇨🇭 Swiss Hosted</span>
+            <span style="background:var(--gold);color:var(--navy);padding:4px 8px;border-radius:999px">Audited</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.1);margin-top:32px;padding-top:16px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12px;color:rgba(255,255,255,.5)">
+      <span>© 2025 Monello World Global Partners AG. All rights reserved. Not financial advice.</span>
+      <span>Privacy • Terms • Risk Disclosure • Imprint</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ DASHBOARD ══════════ -->
+<div id="dash" class="modal-bg hidden">
+  <!-- auth gate -->
+  <div id="authGate" style="min-height:100%;display:grid;place-items:center">
+    <div style="width:100%;max-width:440px;background:#fff;border-radius:28px;padding:32px;box-shadow:0 30px 80px rgba(0,0,0,.3)">
+      <a href="#" onclick="closeDash();return false" style="font-size:12px;letter-spacing:.12em;opacity:.6">← Back to Monello World</a>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:16px">
+        <div style="width:40px;height:40px;border-radius:12px;background:var(--navy);display:grid;place-items:center"><span class="serif" style="color:var(--gold);font-size:20px">M</span></div>
+        <div><div style="font-weight:700;letter-spacing:.12em;font-size:14px">MONELLO WORLD</div><div style="font-size:12px;opacity:.6">Investor Dashboard • Crypto Only</div></div>
+      </div>
+      <h1 class="serif" style="font-size:28px;line-height:1;margin-top:24px;font-weight:400">Access your <span style="font-style:italic;color:var(--gold)">wealth</span> dashboard.</h1>
+      <p style="font-size:14px;opacity:.6;margin-top:8px">Fund via crypto, initiate plans, withdraw instantly, track growth daily.</p>
+      <div style="margin-top:24px;display:flex;flex-direction:column;gap:12px">
+        <input id="aName" placeholder="Full name (for registration)" style="background:var(--cream);border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:12px 16px;font-size:14px">
+        <input id="aMail" placeholder="Email address" style="background:var(--cream);border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:12px 16px;font-size:14px">
+        <input id="aPass" type="password" placeholder="Password" style="background:var(--cream);border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:12px 16px;font-size:14px">
+        <button class="btn-navy" style="padding:12px" onclick="auth('login')">Login →</button>
+        <button class="btn-gold" style="padding:12px" onclick="auth('register')">Create Account (Free)</button>
+        <div style="text-align:center;font-size:12px;opacity:.5">By continuing you agree to Terms • Deposits &amp; withdrawals in crypto only</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- app -->
+  <div id="app" class="hidden" style="display:flex;gap:0;min-height:100%">
+    <aside class="hide-md" style="width:280px;background:var(--navy);color:#fff;padding:24px;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;border-radius:28px 0 0 28px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:36px;height:36px;border-radius:12px;background:var(--gold);display:grid;place-items:center" class="serif"><b style="color:var(--navy)">M</b></div>
+        <div><div style="font-weight:700;letter-spacing:.12em;font-size:12px">MONELLO WORLD</div><div style="font-size:10px;letter-spacing:.12em;opacity:.6">GLOBAL PARTNERS AG</div></div>
+      </div>
+      <div style="margin-top:24px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:16px">
+        <div style="font-size:12px;opacity:.6;letter-spacing:.12em">WELCOME</div>
+        <div style="font-weight:600" id="sdName">—</div>
+        <div style="font-size:12px;opacity:.6" id="sdMail">—</div>
+        <div style="margin-top:8px;display:inline-block;font-size:11px;background:var(--gold);color:var(--navy);padding:4px 8px;border-radius:999px;font-weight:700">VERIFIED • KYC ✓</div>
+      </div>
+      <nav style="margin-top:24px;display:flex;flex-direction:column;gap:4px" id="sideNav"></nav>
+      <div style="margin-top:auto;background:var(--gold);border-radius:18px;padding:16px;color:var(--navy)">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.12em">CRYPTO ONLY</div>
+        <div style="font-size:12px;line-height:1.5;margin-top:4px">Deposits &amp; withdrawals exclusively in BTC, ETH, USDT, BNB, LTC. No fiat.</div>
+        <div style="font-size:11px;margin-top:8px;opacity:.7">Networks: BTC, ERC-20, TRC-20, BEP-20</div>
+      </div>
+      <button onclick="logout()" style="margin-top:16px;font-size:12px;opacity:.6;background:none;color:#fff;text-align:left">Logout →</button>
+    </aside>
+
+    <div style="flex:1;min-width:0;background:var(--cream);border-radius:0 28px 28px 0">
+      <div style="background:#fff;border-bottom:1px solid rgba(0,0,0,.06);padding:16px 24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;border-radius:0 28px 0 0">
+        <div style="display:flex;align-items:center;gap:24px">
+          <div>
+            <div style="font-size:12px;letter-spacing:.12em;opacity:.5">DASHBOARD • LIVE</div>
+            <div style="font-weight:700" id="topGreet">Hi — your wealth, compounding.</div>
+          </div>
+          <div class="hide-lg" style="display:flex;align-items:center;gap:12px;font-size:12px;background:var(--cream);padding:8px 12px;border-radius:999px" >
+            <span class="mono">BTC <b id="dBtc">$67,432</b></span><span style="opacity:.2">|</span><span class="mono">ETH <b id="dEth">$3,812</b></span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="background:var(--cream);border-radius:999px;padding:8px 16px">
+            <div style="font-size:11px;opacity:.6">AVAILABLE BALANCE</div>
+            <div style="font-weight:700" id="topBal">$0.00</div>
+          </div>
+          <button onclick="closeDash()" style="padding:8px 16px;border-radius:999px;border:1px solid rgba(0,0,0,.12);background:#fff;font-size:14px">Close ✕</button>
+        </div>
+      </div>
+
+      <!-- mobile tabs -->
+      <div class="hide-md" style="display:flex;gap:6px;overflow:auto;padding:12px 16px;background:var(--navy)" id="mobTabs"></div>
+
+      <div style="padding:24px;max-width:1200px;margin:0 auto" id="view"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════ DATA ══════════ */
+const PLANS=[
+ {id:"starter",name:"STARTER",sub:"Capital Builder",min:100,max:1000,roiTxt:"20% — 30%",roi:25,dur:"3 Days",days:3,bg:"#E8F5E9",ac:"#2E7D32",bd:"#A5D6A7",ic:"🌱",feat:["Daily accrual","Instant crypto withdrawal","BTC / ETH / USDT deposit","24/7 Support"],pop:false},
+ {id:"gold",name:"GOLD",sub:"Wealth Accelerator",min:1100,max:10000,roiTxt:"40% — 70%",roi:55,dur:"7 Days",days:7,bg:"#FFF8E1",ac:"#B8924D",bd:"#FFE082",ic:"👑",feat:["Compound option","Priority crypto payouts","Dedicated manager","Affiliate 8% bonus"],pop:true},
+ {id:"realestate",name:"REAL ESTATE",sub:"Legacy Portfolio",min:10000,max:50000,roiTxt:"70% Fixed",roi:70,dur:"14 Days",days:14,bg:"#E0F2F1",ac:"#0A4A3A",bd:"#80CBC4",ic:"🏛️",feat:["Swiss REIT exposure","Bi-weekly dividends","Capital protection","VIP concierge"],pop:false}
+];
+const CRYPTOS=[
+ {id:"btc",name:"Bitcoin",sym:"BTC",net:"BTC (SegWit)",addr:"bc1qxy2kgy95k5v3m9z8w0p7r6t4e5f6g7h8j9k0l2m3",ic:"₿",rate:67432,conf:1},
+ {id:"eth",name:"Ethereum",sym:"ETH",net:"ERC-20",addr:"0x742d35Cc6634C0532925a3b844Bc9e7595f2bD18",ic:"Ξ",rate:3812,conf:12},
+ {id:"usdt_trc",name:"Tether USD",sym:"USDT",net:"TRC-20",addr:"TQk9a1c2d3e4f5g6h7j8k9l0m1n2o3p4q5r6s7t8",ic:"₮",rate:1,conf:20},
+ {id:"usdt_erc",name:"Tether USD",sym:"USDT",net:"ERC-20",addr:"0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B",ic:"₮",rate:1,conf:20},
+ {id:"bnb",name:"BNB",sym:"BNB",net:"BEP-20",addr:"bnb1grpf0955h0ykzq3e7d6w4r5t6y7u8i9o0p1a2s3d",ic:"B",rate:612,conf:15},
+ {id:"ltc",name:"Litecoin",sym:"LTC",net:"LTC",addr:"ltc1qxy2kgy95k5v3m9z8w0p7r6t4e5f6g7h8j9k0l2m3n4",ic:"Ł",rate:84,conf:6}
+];
+const money=n=>"$"+Number(n||0).toLocaleString(undefined,{maximumFractionDigits:2});
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* ══════════ STATE ══════════ */
+let S={user:null,balance:0,inv:[],tx:[],tab:"overview",depCrypto:CRYPTOS[0],wdCrypto:CRYPTOS[0],depAmt:"500",wdAmt:"",wdAddr:"",plan:PLANS[1],planAmt:2500,calcPlan:PLANS[1]};
+function load(){try{S.user=JSON.parse(localStorage.getItem("mw_user")||"null");S.balance=parseFloat(localStorage.getItem("mw_bal")||"0");S.inv=JSON.parse(localStorage.getItem("mw_inv")||"[]");S.tx=JSON.parse(localStorage.getItem("mw_tx")||"[]");}catch(e){}}
+function save(){localStorage.setItem("mw_user",JSON.stringify(S.user));localStorage.setItem("mw_bal",String(S.balance));localStorage.setItem("mw_inv",JSON.stringify(S.inv));localStorage.setItem("mw_tx",JSON.stringify(S.tx));}
+load();
+
+function notify(m){const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),3200);}
+
+/* ══════════ LIVE TICKER ══════════ */
+let px={btc:67432,gold:2341,eth:3812};
+function tickPx(){
+  px.btc+=(Math.random()-.5)*90; px.gold+=(Math.random()-.5)*2.2; px.eth+=(Math.random()-.5)*18;
+  const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent="$"+v.toLocaleString(undefined,{maximumFractionDigits:1});};
+  set("tBtc",px.btc);set("tGold",px.gold);set("tEth",px.eth);set("dBtc",px.btc);set("dEth",px.eth);
+}
+setInterval(tickPx,2500);tickPx();
+
+/* ══════════ STATIC RENDER ══════════ */
+function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("hidden");}
+function responsive(){
+  const d=document.getElementById("heroGrid");if(d)d.style.gridTemplateColumns=window.innerWidth>=1024?"1.15fr .85fr":"1fr";
+  const a=document.getElementById("aboutGrid");if(a)a.style.gridTemplateColumns=window.innerWidth>=1024?"1fr 1fr":"1fr";
+  const h=document.getElementById("howGrid");if(h)h.style.gridTemplateColumns=window.innerWidth>=1024?"1.2fr .8fr":"1fr";
+  const p=document.getElementById("perfGrid");if(p)p.style.gridTemplateColumns=window.innerWidth>=1024?"1.1fr .9fr":"1fr";
+  const f=document.getElementById("faqGrid");if(f)f.style.gridTemplateColumns=window.innerWidth>=1024?"1fr 1fr":"1fr";
+}
+window.addEventListener("resize",responsive);responsive();
+
+/* calculator */
+function renderCalcPlans(){
+  document.getElementById("calcPlans").innerHTML=PLANS.map(p=>`
+   <button onclick="setCalc('${p.id}')" style="border:2px solid ${S.calcPlan.id===p.id?"var(--navy)":"transparent"};background:${S.calcPlan.id===p.id?"var(--navy)":"var(--cream)"};color:${S.calcPlan.id===p.id?"#fff":"inherit"};border-radius:18px;padding:12px;text-align:left">
+     <div style="font-size:11px;letter-spacing:.12em;opacity:.6">${p.name}</div>
+     <div style="font-size:14px;font-weight:700">${p.roiTxt}</div>
+     <div style="font-size:12px;opacity:.6">${p.dur}</div></button>`).join("");
+}
+function setCalc(id){S.calcPlan=PLANS.find(p=>p.id===id);S.planAmt=Math.min(Math.max(S.planAmt,S.calcPlan.min),S.calcPlan.max);renderCalc();calcUpdate();}
+function calcUpdate(){
+  const r=document.getElementById("calcRange");if(!r)return;
+  r.min=S.calcPlan.min;r.max=S.calcPlan.max;S.planAmt=parseInt(r.value);
+  const out=Math.round(S.planAmt*(1+S.calcPlan.roi/100));
+  document.getElementById("calcAmtLbl").textContent=money(S.planAmt);
+  document.getElementById("calcMin").textContent=money(S.calcPlan.min);
+  document.getElementById("calcMax").textContent=money(S.calcPlan.max);
+  document.getElementById("calcIn").textContent=money(S.planAmt);
+  document.getElementById("calcOut").textContent=money(out);
+  document.getElementById("calcProf").textContent="+"+money(out-S.planAmt)+" profit • "+S.calcPlan.days+"d";
+  document.getElementById("calcCta").textContent="Invest "+money(S.planAmt)+" →";
+}
+function renderCalc(){renderCalcPlans();calcUpdate();}
+renderCalc();
+
+/* payouts */
+const PAYS=[{n:"Sophie M.",p:"Gold",a:"$4,850",t:"12s ago",f:"🇨🇭"},{n:"Lukas K.",p:"Real Estate",a:"$18,200",t:"48s ago",f:"🇩🇪"},{n:"Elena R.",p:"Starter",a:"$310",t:"1m ago",f:"🇦🇹"},{n:"Tomas B.",p:"Gold",a:"$7,640",t:"2m ago",f:"🇨🇿"}];
+document.getElementById("payouts").innerHTML=PAYS.map(r=>`
+ <div style="display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:12px 16px;margin-bottom:12px;font-size:14px">
+   <div style="display:flex;align-items:center;gap:12px">
+     <span style="width:32px;height:32px;border-radius:99px;background:#fff;color:var(--navy);display:grid;place-items:center;font-size:12px">${r.f}</span>
+     <div><div style="font-weight:500;line-height:1.2">${r.n} • ${r.p}</div><div style="font-size:12px;opacity:.6">${r.t} • crypto</div></div>
+   </div><div style="font-weight:700;color:var(--gold)">${r.a}</div></div>`).join("");
+
+/* timeline */
+document.getElementById("timeline").innerHTML=[
+ {y:"2013",t:"Founded in Zug, CH",d:"Commodity & real-estate consortium licensed under FINMA."},
+ {y:"2015",t:"Crypto Division Launched",d:"Early institutional BTC/ETH custody + mining operations."},
+ {y:"2018",t:"1M Members Milestone",d:"Expanded to DACH region; BaFin & CSSF recognitions."},
+ {y:"2021",t:"Energy Infrastructure Fund",d:"Solar + hydro assets across Alpine corridor."},
+ {y:"2024",t:"11M Members • 12.2k Partners",d:"Awarded 'Outstanding Performance' by European Finance Council."}
+].map(i=>`<div style="display:flex;gap:16px;margin-bottom:20px">
+  <div style="width:64px;flex-shrink:0"><span class="mono" style="color:var(--gold);font-size:14px;font-weight:700">${i.y}</span></div>
+  <div style="flex:1;border-left:1px solid rgba(255,255,255,.15);padding-left:16px">
+    <div style="font-weight:600;font-size:14px">${i.t}</div><div style="font-size:12px;color:rgba(255,255,255,.6)">${i.d}</div></div></div>`).join("");
+
+/* sectors */
+document.getElementById("sectorsGrid").innerHTML=[
+ {i:"⛏️",t:"Gold Mining",d:"Direct stakes in Alpine & West African mines. Physical bullion custody in Zurich.",s:"22% p.a. avg"},
+ {i:"🏢",t:"Prime Real Estate",d:"Commercial & residential REITs in Zurich, Vienna, Berlin — rental + appreciation.",s:"€890M AUM"},
+ {i:"📈",t:"Stock Exchange",d:"Blue-chip DACH equities, SMI & DAX arbitrage with algorithmic overlay.",s:"Sharpe 2.4"},
+ {i:"🛢️",t:"Oil Mining",d:"Upstream partnerships in North Sea & sustainable transition assets.",s:"47 Concessions"},
+ {i:"⚡",t:"Energy Industry",d:"Hydro, solar & grid storage. Powering Central Europe since 2019.",s:"312 MW"},
+ {i:"₿",t:"Cryptocurrencies",d:"Institutional BTC/ETH staking, mining & DeFi yield since 2015.",s:"Since 2015"}
+].map(s=>`<div class="card" style="border-radius:22px;padding:24px">
+  <div style="width:40px;height:40px;border-radius:12px;background:var(--cream);display:grid;place-items:center;font-size:18px">${s.i}</div>
+  <div style="font-weight:600;margin-top:16px">${s.t}</div>
+  <div style="font-size:14px;opacity:.6;margin-top:4px;line-height:1.6">${s.d}</div>
+  <div style="display:inline-block;margin-top:16px;font-size:12px;background:var(--navy);color:#fff;padding:4px 10px;border-radius:999px" class="mono">${s.s}</div></div>`).join("");
+
+/* steps + why */
+document.getElementById("stepsGrid").innerHTML=[
+ {n:"01",h:"Fund with Crypto",p:"Deposit BTC, ETH, USDT, BNB or LTC. Credited after network confirmations — from $10."},
+ {n:"02",h:"Initiate Your Plan",p:"Choose Starter, Gold or Real Estate. Capital is allocated across our 6 sectors with daily accrual."},
+ {n:"03",h:"Withdraw in Crypto",p:"Profits auto-credit at maturity. Withdraw to any external wallet, usually within 15 minutes."}
+].map(s=>`<div style="background:#fff;border-radius:18px;padding:20px">
+  <div style="width:32px;height:32px;border-radius:99px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:12px;font-weight:700">${s.n}</div>
+  <div style="font-weight:600;margin-top:12px">${s.h}</div><div style="font-size:14px;opacity:.6;margin-top:4px;line-height:1.5">${s.p}</div></div>`).join("");
+
+document.getElementById("whyGrid").innerHTML=[
+ {t:"Certified & Audited",d:"FINMA-registered, PwC-audited quarterly since 2013. Client funds segregated."},
+ {t:"Monetary System Design",d:"Built not just for profit, but to create lasting monetary resilience for families."},
+ {t:"Affiliate Advantage",d:"12,200+ European corporates = preferential terms unavailable to retail."},
+ {t:"Crypto-First Settlement",d:"On-chain deposits & payouts — fast, borderless, transparent on explorer."}
+].map(f=>`<div style="display:flex;gap:12px">
+  <span style="width:24px;height:24px;border-radius:99px;background:#ecfdf5;color:#047857;display:grid;place-items:center;font-size:12px;flex-shrink:0">✓</span>
+  <div><div style="font-size:14px;font-weight:600">${f.t}</div><div style="font-size:12px;opacity:.6;line-height:1.6">${f.d}</div></div></div>`).join("");
+
+/* plans */
+function renderPlans(){
+ document.getElementById("plansGrid").innerHTML=PLANS.map(p=>`
+  <div class="card" style="position:relative;padding:24px;display:flex;flex-direction:column;border:2px solid ${p.pop?"var(--gold)":"rgba(0,0,0,.05)"};box-shadow:${p.pop?"0 16px 40px rgba(201,168,106,.18)":"none"}">
+    ${p.pop?`<div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:12px;font-weight:700;padding:4px 16px;border-radius:999px;white-space:nowrap">★ MOST CHOSEN • GOLD</div>`:""}
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div><div style="font-size:11px;letter-spacing:.2em;opacity:.5">${p.name} PLAN</div><div style="font-size:14px;font-weight:600">${p.sub}</div></div>
+      <div style="width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:18px;background:${p.bg}">${p.ic}</div>
+    </div>
+    <div style="margin-top:20px">
+      <div style="display:flex;align-items:baseline;gap:8px"><span style="font-size:30px;font-weight:700">${money(p.min)}</span><span style="opacity:.4">—</span><span style="font-size:30px;font-weight:700">${money(p.max)}</span></div>
+      <div style="font-size:12px;opacity:.6;margin-top:4px">Minimum to Maximum allocation</div></div>
+    <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:20px">
+      <div style="border-radius:18px;padding:12px;text-align:center;background:${p.bg};border:1px solid ${p.bd}">
+        <div style="font-size:12px;opacity:.6">RETURN</div><div style="font-weight:700;color:${p.ac}">${p.roiTxt}</div></div>
+      <div style="border-radius:18px;padding:12px;text-align:center;background:var(--cream);border:1px solid rgba(0,0,0,.08)">
+        <div style="font-size:12px;opacity:.6">DURATION</div><div style="font-weight:700">${p.dur}</div></div></div>
+    <ul style="margin-top:20px;display:flex;flex-direction:column;gap:8px;font-size:14px;list-style:none;padding:0">
+      ${p.feat.map(f=>`<li style="display:flex;align-items:center;gap:8px"><span style="width:20px;height:20px;border-radius:99px;background:#ecfdf5;color:#047857;display:grid;place-items:center;font-size:11px">✓</span>${f}</li>`).join("")}
+    </ul>
+    <div style="margin-top:20px;display:flex;gap:8px">
+      <input type="number" placeholder="${p.min}" onfocus="S.plan='${p.id}'" onchange="quickAmt('${p.id}',this.value)" style="flex:1;background:var(--cream);border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:12px 16px;font-size:14px">
+      <button class="btn-navy" style="padding:12px 20px;font-size:14px;white-space:nowrap" onclick="startPlan('${p.id}')">Invest →</button></div>
+    <div style="text-align:center;font-size:11px;opacity:.5;margin-top:8px">Instant activation • Daily profit view • Crypto funded</div>
+  </div>`).join("");
+}
+function quickAmt(id,v){const p=PLANS.find(x=>x.id===id);S.plan=p;S.planAmt=parseInt(v)||p.min;}
+function startPlan(id){const p=PLANS.find(x=>x.id===id);S.plan=p;S.planAmt=p.min;openDash();S.tab="invest";renderDash();}
+renderPlans();
+
+/* chart */
+document.getElementById("chart").innerHTML=[30,45,38,62,55,78,68,92,85,100].map((h,i)=>`<div style="flex:1;border-radius:8px 8px 0 0;background:${i===9?"var(--gold)":"var(--navy)"};height:${h}%"></div>`).join("");
+
+/* testimonials */
+document.getElementById("testi").innerHTML=[
+ {q:"I moved my family office allocation from a Zurich private bank to Monello World in 2021. Consistency and Swiss custody won me over.",a:"Marc F., Zug 🇨🇭 — Gold + Real Estate"},
+ {q:"Starter to Gold in 4 months. Withdrawals hit my Ledger in minutes. The affiliate program alone paid my referral network.",a:"Annika S., Munich 🇩🇪 — Gold Plan"},
+ {q:"We needed energy diversification. Their hydro allocation gave us yield while staying ESG-compliant. Exceptional reporting.",a:"Elena K., Vienna 🇦🇹 — Real Estate"}
+].map(t=>`<div style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:16px">
+  <div style="font-size:14px;line-height:1.6">“${t.q}”</div>
+  <div style="font-size:12px;color:rgba(255,255,255,.6);margin-top:8px">${t.a}</div>
+  <div style="font-size:12px;color:var(--gold);margin-top:4px">★ ★ ★ ★ ★ 5.0</div></div>`).join("");
+
+/* faq */
+document.getElementById("faqList").innerHTML=[
+ {q:"How do I fund my account?",a:"Deposits are cryptocurrency-only. Choose BTC, ETH, USDT (TRC-20/ERC-20), BNB or LTC in the dashboard, send to the generated address, and your balance credits after the required network confirmations. Minimum $10."},
+ {q:"Is Monello World registered and certified?",a:"Yes. Registered in Zug, Switzerland and supervised under FINMA guidelines, with BaFin/CSSF recognitions. Quarterly audits by PwC Switzerland and segregated client custody."},
+ {q:"Which plan should I choose?",a:"Starter ($100–$1,000, 20–30% in 3 days) for testing; Gold ($1,100–$10,000, 40–70% in 7 days) is our most chosen; Real Estate ($10,000–$50,000, 70% in 14 days) for legacy allocations."},
+ {q:"How are withdrawals paid?",a:"Exclusively in cryptocurrency to any external wallet you control. Payouts are usually broadcast within 15 minutes; you receive a TxHash to track on-chain. Fee 1.5% (min $2)."},
+ {q:"Can I withdraw early?",a:"Profits credit at term end (3/7/14 days). Principal + profit withdraw instantly thereafter. No hidden lock-ins."}
+].map(f=>`<details><summary>${f.q} <span style="opacity:.4">+</span></summary><div style="font-size:14px;opacity:.65;margin-top:8px;line-height:1.65">${f.a}</div></details>`).join("");
+
+function sendMsg(e){e.preventDefault();notify("Message sent — our concierge will reply shortly");document.getElementById("cName").value="";document.getElementById("cMail").value="";document.getElementById("cMsg").value="";}
+
+/* ══════════ DASHBOARD ══════════ */
+const TABS=[{id:"overview",l:"Overview",i:"◈"},{id:"fund",l:"Fund Account (Crypto)",i:"₿"},{id:"invest",l:"Initiate Plan",i:"↗"},{id:"withdraw",l:"Withdraw (Crypto)",i:"↘"},{id:"history",l:"Transactions",i:"≡"}];
+
+function openDash(mode){
+  document.getElementById("dash").classList.remove("hidden");
+  document.body.style.overflow="hidden";
+  if(mode==="register"){const n=document.getElementById("aName");if(n&&!n.value)n.focus();}
+  if(!S.user&&mode==="register")notify("Create your free account to continue");
+  renderDash();
+}
+function closeDash(){document.getElementById("dash").classList.add("hidden");document.body.style.overflow="";}
+function auth(mode){
+  const mail=document.getElementById("aMail").value.trim(),pass=document.getElementById("aPass").value,name=document.getElementById("aName").value.trim();
+  if(!mail||!pass)return notify("Please enter email and password");
+  S.user={name:name||mail.split("@")[0],email:mail};
+  save();renderDash();notify(mode==="register"?"Account created — Welcome to Monello World":"Welcome back, "+S.user.name);
+}
+function logout(){S.user=null;save();document.getElementById("app").classList.add("hidden");document.getElementById("authGate").classList.remove("hidden");notify("Logged out");}
+
+function renderDash(){
+  if(!S.user){document.getElementById("authGate").classList.remove("hidden");document.getElementById("app").classList.add("hidden");return;}
+  document.getElementById("authGate").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+  document.getElementById("sdName").textContent=S.user.name;
+  document.getElementById("sdMail").textContent=S.user.email;
+  document.getElementById("topGreet").textContent="Hi, "+S.user.name+" — your wealth, compounding.";
+  document.getElementById("topBal").textContent="$"+S.balance.toLocaleString(undefined,{minimumFractionDigits:2});
+  document.getElementById("navUser").textContent="Hi, "+S.user.name+" • Dashboard";
+  document.getElementById("sideNav").innerHTML=TABS.map(t=>`<button class="sidebtn ${S.tab===t.id?"active":""}" onclick="S.tab='${t.id}';renderDash()"><span style="width:28px;height:28px;border-radius:10px;background:rgba(0,0,0,.08);display:grid;place-items:center;font-size:12px">${t.i}</span>${t.l}</button>`).join("");
+  document.getElementById("mobTabs").innerHTML=TABS.map(t=>`<button onclick="S.tab='${t.id}';renderDash()" style="padding:6px 12px;border-radius:999px;font-size:12px;white-space:nowrap;background:${S.tab===t.id?"#fff":"rgba(255,255,255,.12)"};color:${S.tab===t.id?"var(--navy)":"#fff"}">${t.l}</button>`).join("");
+  const v=document.getElementById("view");
+  if(S.tab==="overview")v.innerHTML=vOverview();
+  if(S.tab==="fund")v.innerHTML=vFund();
+  if(S.tab==="invest")v.innerHTML=vInvest();
+  if(S.tab==="withdraw")v.innerHTML=vWithdraw();
+  if(S.tab==="history")v.innerHTML=vHistory();
+  v.classList.remove("fade");void v.offsetWidth;v.classList.add("fade");
+}
+
+/* ── OVERVIEW ── */
+function vOverview(){
+  const inv=S.inv,invested=inv.reduce((s,i)=>s+i.amount,0),expected=inv.reduce((s,i)=>s+i.expected,0),profit=expected-invested,active=inv.filter(i=>i.status==="Active").length,daily=inv.reduce((s,i)=>s+(i.daily||0),0);
+  const base=S.balance*.6+invested*.4;
+  const bars=Array.from({length:14},(_,i)=>Math.max(18,Math.round(base*(1+(profit/(invested||1))*.6*(i/14))/Math.max(base,1)*100)));
+  return `
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(210px,1fr))">
+    <div style="background:var(--navy);color:#fff;border-radius:24px;padding:24px"><div style="font-size:12px;letter-spacing:.12em;opacity:.6">TOTAL BALANCE</div><div style="font-size:24px;font-weight:700;margin-top:4px">${money(S.balance)}</div><div style="font-size:12px;color:#34d399;margin-top:4px">funded via crypto</div></div>
+    <div class="card" style="border-radius:24px;padding:24px"><div style="font-size:12px;letter-spacing:.12em;opacity:.6">TOTAL INVESTED</div><div style="font-size:24px;font-weight:700;margin-top:4px">${money(invested)}</div><div style="font-size:12px;opacity:.6">${active} active plans</div></div>
+    <div style="background:var(--gold);border-radius:24px;padding:24px"><div style="font-size:12px;letter-spacing:.12em;opacity:.7">PROJECTED RETURN</div><div style="font-size:24px;font-weight:700;margin-top:4px">${money(expected)}</div><div style="font-size:12px;opacity:.7">+${money(profit)} profit</div></div>
+    <div class="card" style="border-radius:24px;padding:24px"><div style="font-size:12px;letter-spacing:.12em;opacity:.6">GROWTH RATE</div><div style="font-size:24px;font-weight:700;margin-top:4px">+47.3%</div><div style="font-size:12px;color:#059669">avg per cycle</div></div>
+  </div>
+
+  <div class="card" style="border-radius:24px;padding:24px;margin-top:24px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <h3 style="font-weight:600">Investment Growth — Real-time Monitor</h3>
+      <span style="font-size:12px;background:#ecfdf5;color:#047857;padding:4px 12px;border-radius:999px;border:1px solid #a7f3d0">● LIVE UPDATING</span></div>
+    <div style="display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:24px">
+      ${bars.map((h,i)=>`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:100%;height:${h}%;border-radius:8px 8px 0 0;background:${i===13?"var(--gold)":"var(--navy)"}"></div><span style="font-size:10px;opacity:.4" class="mono">D${i+1}</span></div>`).join("")}
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-top:24px">
+      <div style="background:var(--cream);border-radius:18px;padding:16px;text-align:center"><div style="font-size:12px;opacity:.6">DAILY EARNED TODAY</div><div style="font-weight:700;color:#047857">+${money(daily||84)}</div></div>
+      <div style="background:var(--cream);border-radius:18px;padding:16px;text-align:center"><div style="font-size:12px;opacity:.6">NEXT PAYOUT</div><div style="font-weight:700">${inv[0]?new Date(inv[0].end).toLocaleDateString():"—"}</div></div>
+      <div style="background:var(--cream);border-radius:18px;padding:16px;text-align:center"><div style="font-size:12px;opacity:.6">COMPOUND</div><div style="font-weight:700">Yes • Auto</div></div>
+    </div>
+  </div>
+
+  <div class="card" style="border-radius:24px;padding:24px;margin-top:24px">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+      <h3 style="font-weight:600">Active Investments</h3>
+      <button class="btn-navy" style="padding:6px 16px;font-size:14px" onclick="S.tab='invest';renderDash()">+ Initiate New Plan</button></div>
+    ${inv.length===0?`<div style="text-align:center;padding:48px 0">
+        <div style="width:48px;height:48px;border-radius:99px;background:var(--cream);display:grid;place-items:center;margin:0 auto">◈</div>
+        <div style="font-weight:500;margin-top:12px">No active investments</div>
+        <div style="font-size:14px;opacity:.6">Fund via crypto, then initiate your first plan from $100.</div>
+        <button class="btn-gold" style="padding:8px 24px;margin-top:16px;font-size:14px" onclick="S.tab='fund';renderDash()">Fund Account →</button></div>`
+      :inv.map(i=>`<div style="background:var(--cream);border-radius:18px;padding:16px;margin-top:16px">
+        <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px">
+          <div><div style="font-weight:700">${i.plan} • ${money(i.amount)} → ${money(i.expected)} <span style="color:#047857">(+${i.roi}%)</span></div>
+          <div style="font-size:12px;opacity:.6">${i.days} days • Daily ${money(i.daily)} • ${new Date(i.start).toLocaleDateString()} → ${new Date(i.end).toLocaleDateString()}</div></div>
+          <span style="background:#10b981;color:#fff;font-size:12px;padding:4px 12px;border-radius:999px;height:fit-content">● Active • ${i.progress}%</span></div>
+        <div class="bar" style="margin-top:12px"><div style="width:${i.progress}%"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-top:4px;opacity:.6"><span>Progress</span><span>${money(i.amount+i.profit*i.progress/100)} accrued</span></div></div>`).join("")}
+  </div>`;
+}
+
+/* ── FUND ── */
+function qr(addr){
+  let cells="";for(let i=0;i<100;i++){const on=(addr.charCodeAt(i%addr.length)+i)%3===0;cells+=`<div class="qrcell" style="background:${on?"#fff":"var(--navy)"}"></div>`;}
+  return `<div style="width:180px;height:180px;background:#fff;padding:12px;border-radius:18px;border:1px solid rgba(0,0,0,.08);margin:0 auto">
+    <div style="width:100%;height:100%;background:var(--navy);border-radius:12px;display:grid;grid-template-columns:repeat(10,1fr);gap:2px;padding:8px">${cells}</div>
+    <div style="font-size:9px;text-align:center;margin-top:4px;opacity:.6" class="mono">SCAN TO PAY • ${addr.slice(0,10)}…</div></div>`;
+}
+function vFund(){
+  const c=S.depCrypto,amt=parseFloat(S.depAmt||"0"),coin=amt/c.rate;
+  return `<div class="grid" style="grid-template-columns:1fr;align-items:start" id="fundGrid">
+   <div class="card" style="border-radius:24px;padding:24px">
+    <h3 style="font-weight:600;font-size:18px">Fund Your Account — Crypto Only</h3>
+    <p style="font-size:14px;opacity:.6;margin-top:4px">Choose asset &amp; network. Send the exact amount to the address. Credited after confirmations. Minimum $10.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-top:20px">
+      ${CRYPTOS.map(x=>`<button class="crypto-btn ${c.id===x.id?"active":""}" onclick="S.depCrypto=CRYPTOS.find(z=>z.id==='${x.id}');renderDash()">
+        <div style="display:flex;align-items:center;gap:8px"><span style="width:28px;height:28px;border-radius:10px;background:${c.id===x.id?"#fff":"var(--cream)"};color:var(--navy);display:grid;place-items:center;font-size:12px;font-weight:700">${x.ic}</span><b style="font-size:14px">${x.sym}</b></div>
+        <div style="font-size:12px;opacity:.6;margin-top:4px">${x.name}</div>
+        <div style="font-size:11px;margin-top:4px;display:inline-block;background:rgba(0,0,0,.06);padding:2px 8px;border-radius:999px">${x.net}</div></button>`).join("")}
+    </div>
+    <div style="margin-top:24px">
+      <label style="font-size:12px;font-weight:500">Amount in USD</label>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <input id="depAmt" type="number" value="${S.depAmt}" oninput="S.depAmt=this.value" style="flex:1;min-width:160px;background:var(--cream);border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:12px 16px;font-size:14px">
+        <div class="mono" style="background:var(--navy);color:#fff;border-radius:999px;padding:12px 20px;font-size:14px">≈ ${coin.toFixed(6)} ${c.sym}</div></div>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        ${[100,500,1000,5000].map(v=>`<button class="chip" onclick="S.depAmt='${v}';renderDash()">$${v.toLocaleString()}</button>`).join("")}
+      </div>
+    </div>
+    <div style="margin-top:24px;background:#fffbeb;border:1px solid #fde68a;border-radius:18px;padding:16px;font-size:12px">
+      <div style="font-weight:600">⚠️ Important: Crypto payments only</div>
+      <div style="opacity:.7;margin-top:4px">Send only <b>${c.sym} on ${c.net}</b> to the address shown. Sending other assets or networks will result in permanent loss. Include memo/tag where required.</div></div>
+   </div>
+   <div style="background:var(--navy);color:#fff;border-radius:24px;padding:24px">
+     <div style="font-size:12px;letter-spacing:.12em;opacity:.6">DEPOSIT ADDRESS • ${c.net}</div>
+     <div style="font-weight:700;margin-top:4px">${c.name} (${c.sym})</div>
+     <div style="margin-top:16px">${qr(c.addr)}</div>
+     <div style="margin-top:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:12px">
+       <div style="font-size:12px;opacity:.6">Wallet Address — tap to copy</div>
+       <div class="mono" style="font-size:14px;word-break:break-all;margin-top:4px">${c.addr}</div>
+       <button onclick="copyTxt('${c.addr}')" style="margin-top:8px;width:100%;background:#fff;color:var(--navy);font-weight:600;padding:8px;border-radius:999px;font-size:14px">Copy Address</button></div>
+     <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:16px;font-size:12px">
+       <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:12px;text-align:center"><div style="opacity:.6">You Send</div><div class="mono" style="font-weight:700">${coin.toFixed(6)}</div></div>
+       <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:12px;text-align:center"><div style="opacity:.6">Network</div><div style="font-weight:700">${c.net}</div></div>
+       <div style="background:rgba(255,255,255,.1);border-radius:12px;padding:12px;text-align:center"><div style="opacity:.6">Conf.</div><div style="font-weight:700">${c.conf}</div></div></div>
+     <button class="btn-gold" style="width:100%;margin-top:16px;padding:12px;font-weight:700" onclick="doDeposit()">I’ve Sent Crypto — Confirm Deposit</button>
+     <div style="font-size:12px;text-align:center;opacity:.6;margin-top:8px">After sending, click confirm. On-chain detection after ${c.conf} confirmations.</div>
+   </div></div>`;
+}
+function copyTxt(t){if(navigator.clipboard)navigator.clipboard.writeText(t).then(()=>notify("Copied ✓"),()=>notify("Copy failed"));}
+function doDeposit(){
+  const amt=parseFloat(S.depAmt||"0"),c=S.depCrypto;
+  if(!amt||amt<10)return notify("Minimum deposit is $10");
+  S.balance+=amt;
+  S.tx.unshift({id:Date.now(),type:"Deposit",method:c.sym+" • "+c.net,amount:amt,status:"Confirmed",date:new Date().toLocaleString(),coin:(amt/c.rate).toFixed(6)+" "+c.sym});
+  save();renderDash();
+  notify("Send "+(amt/c.rate).toFixed(6)+" "+c.sym+" to the address — balance credits after "+c.conf+" confirmations.");
+}
+
+/* ── INVEST ── */
+function vInvest(){
+  const p=S.plan,profit=Math.round(S.planAmt*p.roi/100),exp=S.planAmt+profit;
+  return `<div class="grid" style="grid-template-columns:1fr;align-items:start" id="invGrid">
+   <div class="card" style="border-radius:24px;padding:24px">
+     <h3 style="font-weight:600;font-size:18px">Initiate an Investment Plan</h3>
+     <p style="font-size:14px;opacity:.6;margin-top:4px">Balance: <b>${money(S.balance)}</b> — you can only invest crypto-funded balance.</p>
+     <div style="display:flex;flex-direction:column;gap:12px;margin-top:20px">
+       ${PLANS.map(x=>`<button onclick="S.plan=PLANS.find(z=>z.id==='${x.id}');S.planAmt=${x.min};renderDash()" style="text-align:left;padding:16px;border-radius:18px;border:2px solid ${p.id===x.id?"var(--navy)":"transparent"};background:${p.id===x.id?"var(--navy)":"var(--cream)"};color:${p.id===x.id?"#fff":"inherit"};display:flex;justify-content:space-between;align-items:center">
+         <div><div style="font-size:11px;letter-spacing:.12em;opacity:.6">${x.name}</div><div style="font-weight:700">${x.sub} • ${x.roi}% in ${x.dur}</div><div style="font-size:12px;opacity:.6">${money(x.min)} — ${money(x.max)}</div></div>
+         <span style="width:24px;height:24px;border-radius:99px;border:1px solid currentColor;display:grid;place-items:center;font-size:12px">${p.id===x.id?"✓":""}</span></button>`).join("")}
+     </div>
+     <div style="margin-top:24px">
+       <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:500"><span>Investment Amount (USD)</span><span class="mono">${money(S.planAmt)}</span></div>
+       <input type="range" min="${p.min}" max="${p.max}" step="50" value="${S.planAmt}" oninput="S.planAmt=parseInt(this.value);renderDash()" style="width:100%;margin-top:12px;accent-color:var(--gold)">
+       <div style="display:flex;justify-content:space-between;font-size:12px;opacity:.5" class="mono"><span>${money(p.min)}</span><span>${money(p.max)}</span></div></div>
+   </div>
+   <div style="background:var(--navy);color:#fff;border-radius:24px;padding:24px">
+     <div style="font-size:12px;letter-spacing:.12em;opacity:.6">INVESTMENT PREVIEW</div>
+     <div style="margin-top:12px;background:#fff;color:var(--navy);border-radius:18px;padding:20px">
+       <div style="font-size:12px;opacity:.6">${p.name} PLAN</div>
+       <div style="font-size:24px;font-weight:700">${money(S.planAmt)} → ${money(exp)}</div>
+       <div style="font-size:14px;color:#047857;font-weight:500">+${money(profit)} profit • ${p.days} days • Daily ${money(Math.round(profit/p.days))}</div>
+       <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:16px;font-size:12px">
+         <div style="background:var(--cream);border-radius:12px;padding:12px"><div style="opacity:.6">You Pay</div><div style="font-weight:700">${money(S.planAmt)}</div></div>
+         <div style="background:var(--gold);border-radius:12px;padding:12px"><div style="opacity:.6">You Receive</div><div style="font-weight:700">${money(exp)}</div></div></div></div>
+     <div style="margin-top:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:16px;font-size:12px">
+       <div>Growth timeline: daily accrual, full maturity in ${p.days} days. Withdraw instantly after term.</div>
+       <div style="display:flex;gap:4px;margin-top:8px">${Array.from({length:p.days}).map(()=>`<div style="flex:1;height:8px;border-radius:99px;background:var(--gold)"></div>`).join("")}</div></div>
+     <button class="btn-gold" style="width:100%;margin-top:16px;padding:12px;font-weight:700" onclick="doInvest()">Confirm &amp; Initiate Plan →</button>
+     <div style="font-size:12px;text-align:center;opacity:.6;margin-top:8px">Funds deducted from crypto balance. Audited &amp; insured.</div>
+   </div></div>`;
+}
+function doInvest(){
+  const p=S.plan;
+  if(S.planAmt<p.min||S.planAmt>p.max)return notify("Amount must be "+money(p.min)+" — "+money(p.max));
+  if(S.planAmt>S.balance)return notify("Insufficient balance — fund your account with crypto first");
+  const profit=Math.round(S.planAmt*p.roi/100),exp=S.planAmt+profit;
+  S.balance-=S.planAmt;
+  S.inv.unshift({id:Date.now(),plan:p.name,planId:p.id,amount:S.planAmt,roi:p.roi,days:p.days,expected:exp,profit,daily:Math.round(profit/p.days),start:Date.now(),end:Date.now()+p.days*864e5,status:"Active",progress:Math.round(100/p.days)});
+  S.tx.unshift({id:Date.now()+1,type:"Investment",method:p.name,amount:-S.planAmt,status:"Active",date:new Date().toLocaleString()});
+  save();S.tab="overview";renderDash();
+  notify(money(S.planAmt)+" invested in "+p.name+" — "+p.roi+"% in "+p.dur);
+}
+
+/* ── WITHDRAW ── */
+function vWithdraw(){
+  const c=S.wdCrypto,amt=parseFloat(S.wdAmt||"0"),fee=amt?Math.max(2,amt*.015):0,net=Math.max(0,amt-fee);
+  return `<div class="grid" style="grid-template-columns:1fr;align-items:start" id="wdGrid">
+   <div class="card" style="border-radius:24px;padding:24px">
+     <h3 style="font-weight:600;font-size:18px">Withdraw — Crypto Payout Only</h3>
+     <p style="font-size:14px;opacity:.6;margin-top:4px">Withdrawals settle in cryptocurrency to your external wallet. Min $20, fee 1.5% (min $2). ETA ~15 mins.</p>
+     <div style="margin-top:20px">
+       <label style="font-size:12px;font-weight:500">Select Payout Asset &amp; Network</label>
+       <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-top:8px">
+         ${CRYPTOS.slice(0,4).map(x=>`<button class="crypto-btn ${c.id===x.id?"active":""}" onclick="S.wdCrypto=CRYPTOS.find(z=>z.id==='${x.id}');renderDash()" style="display:flex;align-items:center;gap:8px">
+           <span style="width:28px;height:28px;border-radius:10px;background:${c.id===x.id?"#fff":"var(--cream)"};color:var(--navy);display:grid;place-items:center;font-size:12px;font-weight:700">${x.ic}</span>
+           <div><div style="font-size:14px;font-weight:700">${x.sym}</div><div style="font-size:12px;opacity:.6">${x.net}</div></div></button>`).join("")}</div></div>
+     <div style="margin-top:16px">
+       <label style="font-size:12px;font-weight:500">Your ${c.sym} Wallet Address (${c.net})</label>
+       <input id="wdAddr" value="${esc(S.wdAddr)}" oninput="S.wdAddr=this.value" placeholder="${c.addr.slice(0,30)}…" class="mono" style="width:100%;margin-top:8px;background:var(--cream);border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:12px 16px;font-size:14px">
+       <div style="font-size:11px;opacity:.5;margin-top:4px">Double-check — sending to the wrong network means lost funds.</div></div>
+     <div style="margin-top:16px">
+       <label style="font-size:12px;font-weight:500">Amount (USD)</label>
+       <input id="wdAmt" type="number" value="${S.wdAmt}" oninput="S.wdAmt=this.value" placeholder="200" style="width:100%;margin-top:8px;background:var(--cream);border:1px solid rgba(0,0,0,.08);border-radius:999px;padding:12px 16px;font-size:14px">
+       <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;align-items:center">
+         <button class="chip" onclick="S.wdAmt=String(Math.floor(S.balance*.25));renderDash()">25%</button>
+         <button class="chip" onclick="S.wdAmt=String(Math.floor(S.balance*.5));renderDash()">50%</button>
+         <button class="chip" onclick="S.wdAmt=String(Math.floor(S.balance));renderDash()">MAX</button>
+         <span style="font-size:12px;opacity:.6;margin-left:auto">Available ${money(S.balance)}</span></div></div>
+     <div style="margin-top:16px;background:var(--cream);border-radius:18px;padding:16px;font-size:12px">
+       <div style="display:flex;justify-content:space-between"><span>Amount</span><span>${money(amt)}</span></div>
+       <div style="display:flex;justify-content:space-between"><span>Fee (1.5%, min $2)</span><span>$${fee.toFixed(2)}</span></div>
+       <div style="display:flex;justify-content:space-between;font-weight:700"><span>You Receive</span><span>${(net/c.rate||0).toFixed(6)} ${c.sym}</span></div></div>
+   </div>
+   <div style="background:var(--navy);color:#fff;border-radius:24px;padding:24px">
+     <div style="font-size:12px;letter-spacing:.12em;opacity:.6">CRYPTO WITHDRAWAL SUMMARY</div>
+     <div style="margin-top:16px;background:#fff;color:var(--navy);border-radius:18px;padding:20px">
+       <div style="font-size:12px;opacity:.6">PAYOUT TO</div>
+       <div class="mono" style="font-weight:700;font-size:14px;word-break:break-all">${esc(S.wdAddr)||"— enter wallet address —"}</div>
+       <div style="font-size:12px;opacity:.6;margin-top:8px">${c.net} • ~15 mins • on-chain TxHash provided</div></div>
+     <div style="margin-top:16px;background:rgba(245,158,11,.2);border:1px solid rgba(245,158,11,.3);border-radius:18px;padding:16px;font-size:12px">
+       <div style="font-weight:600">Crypto-only policy</div>
+       <div style="opacity:.8;margin-top:4px">Monello World settles all deposits and withdrawals in cryptocurrency for speed, privacy and borderless access. No bank transfers.</div></div>
+     <button class="btn-gold" style="width:100%;margin-top:16px;padding:12px;font-weight:700" onclick="doWithdraw()">Request Withdrawal →</button>
+     <div style="font-size:12px;text-align:center;opacity:.6;margin-top:8px">You’ll get a dashboard + email notification with your TxHash.</div>
+   </div></div>`;
+}
+function doWithdraw(){
+  const c=S.wdCrypto,amt=parseFloat(S.wdAmt||"0");
+  if(!amt)return notify("Enter an amount");
+  if(!S.wdAddr)return notify("Enter your wallet address");
+  if(amt<20)return notify("Minimum withdrawal is $20");
+  if(amt>S.balance)return notify("Insufficient balance");
+  const fee=Math.max(2,amt*.015),net=amt-fee,hash="0x"+Math.random().toString(16).slice(2,66);
+  S.balance-=amt;
+  S.tx.unshift({id:Date.now(),type:"Withdrawal",method:c.sym+" → "+S.wdAddr.slice(0,12)+"…",amount:-amt,status:"Processing (~15 min)",date:new Date().toLocaleString(),coin:(net/c.rate).toFixed(6)+" "+c.sym,hash});
+  save();S.wdAmt="";renderDash();
+  notify("Withdrawal sent: "+(net/c.rate).toFixed(6)+" "+c.sym+" • TxHash "+hash.slice(0,12)+"…");
+}
+
+/* ── HISTORY ── */
+function vHistory(){
+  return `<div class="card" style="border-radius:24px;padding:24px">
+   <h3 style="font-weight:600">Transaction History</h3>
+   <div style="margin-top:16px;overflow:auto">
+     <table style="font-size:14px;min-width:640px">
+       <thead style="font-size:12px;opacity:.6"><tr><th>Date</th><th>Type</th><th>Method / Plan</th><th style="text-align:right">Crypto</th><th style="text-align:right">USD</th><th style="text-align:right">Status</th></tr></thead>
+       <tbody>${S.tx.length===0?`<tr><td colspan="6" style="text-align:center;padding:40px;opacity:.5">No transactions yet. Fund your account with crypto to begin.</td></tr>`
+        :S.tx.map(t=>`<tr style="border-top:1px solid rgba(0,0,0,.06)">
+          <td style="font-size:12px;opacity:.6">${t.date}</td>
+          <td><span style="padding:4px 10px;border-radius:999px;font-size:12px;font-weight:500;background:${t.type==="Deposit"?"#ecfdf5;color:#047857":t.type==="Withdrawal"?"#fffbeb;color:#b45309":"var(--navy);color:#fff"}">${t.type}</span></td>
+          <td class="mono" style="font-size:12px">${esc(t.method)}</td>
+          <td class="mono" style="font-size:12px;text-align:right">${t.coin||"—"}</td>
+          <td style="text-align:right;font-weight:700;color:${t.amount<0?"#dc2626":"#047857"}">${t.amount<0?"":"+"}${money(Math.abs(t.amount))}</td>
+          <td style="text-align:right;font-size:12px"><span style="background:var(--cream);padding:4px 8px;border-radius:999px">${t.status}</span></td></tr>`).join("")}</tbody></table></div>
+   <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+     <button class="btn-navy" style="padding:8px 16px;font-size:14px" onclick="exportCSV()">Export CSV</button>
+     <button style="padding:8px 16px;border-radius:999px;border:1px solid rgba(0,0,0,.12);background:#fff;font-size:14px" onclick="notify('Support ticket opened — avg reply 14 min')">Need help?</button></div>
+  </div>`;
+}
+function exportCSV(){
+  const rows=[["Date","Type","Method","Crypto","USD","Status"]].concat(S.tx.map(t=>[t.date,t.type,t.method,t.coin||"",t.amount,t.status]));
+  const blob=new Blob([rows.map(r=>r.map(x=>'"'+String(x).replace(/"/g,'""')+'"').join(",")).join("\n")],{type:"text/csv"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="monello-world-statement.csv";a.click();
+  notify("CSV exported");
+}
+
+/* progress ticker for active investments */
+setInterval(()=>{let ch=false;S.inv.forEach(i=>{if(i.status==="Active"&&i.progress<100){i.progress=Math.min(100,i.progress+Math.round(100/(i.days*24)));ch=true;}});if(ch){save();if(S.tab==="overview"&&!document.getElementById("dash").classList.contains("hidden"))renderDash();}},30000);
+
+/* grid tweaks for wide screens */
+(function(){const mq=window.matchMedia("(min-width:1024px)");const ap=()=>{if(mq.matches){["fundGrid","invGrid","wdGrid"].forEach(id=>{const e=document.getElementById(id);if(e)e.style.gridTemplateColumns="1.1fr .9fr";});}};setInterval(ap,400);})();
+</script>
+</body>
+</html>
